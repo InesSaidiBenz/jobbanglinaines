@@ -14,9 +14,9 @@
   },
   "scripts": {
     "start": "concurrently \"npm run start --prefix frontend\"",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "npm run build --prefix frontend",
+    "test": "react-scripts test --prefix frontend",
+    "eject": "react-scripts eject --prefix frontend"
   },
   "eslintConfig": {
     "extends": [
@@ -35,5 +35,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "homepage": "."
 }
