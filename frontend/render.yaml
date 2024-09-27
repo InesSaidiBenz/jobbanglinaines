@@ -1,0 +1,7 @@
+services:
+  - type: static
+    name: jobbanglinaines
+    env: static
+    buildCommand: npm install --prefix frontend && npm run build --prefix frontend
+    publishPath: frontend/build
+    rootDir: frontend
