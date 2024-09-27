@@ -1,28 +1,24 @@
 import React, { useState } from "react";
-
-import { EmploiList } from "../../data/emploi"; // Assurez-vous que le chemin est correct
-
-import "./MesAnnonces.css"; // Assurez-vous que ce fichier existe
+import { EmploiList } from "../../data/emploi";
+import "./MesAnnonces.css";
 
 const MesAnnonces = ({ connectedEmployerEmail }) => {
-
-  const [emplois, setEmplois] = useState(EmploiList); // État pour gérer la liste des emplois
+  const [emplois, setEmplois] = useState(EmploiList);
 
   const handleDelete = (emploiToDelete) => {
-
-    setEmplois(emplois.filter(emploi => emploi !== emploiToDelete)); // Supprime l'emploi de la liste
-
+    setEmplois(emplois.filter((emploi) => emploi !== emploiToDelete));
   };
 
   // Filtrer les emplois selon l'employeur connecté
+  const filteredEmploiList = emplois.filter(
+    (emploi) => emploi.email_employeur === connectedEmployerEmail
+  );
 
-  const filteredEmploiList = emplois.filter(emploi => emploi.email_employeur === connectedEmployerEmail);
+  // Ajoute un log pour voir les emplois filtrés
+  console.log('emplois filtrés:', filteredEmploiList);
 
-  // Ajoute un console.log pour déboguer
-  console.log("Annonces filtrées : ", filteredEmploiList);
-  
   return (
-    <div> 
+    <div>
       <ul className="lmj-emploi-list">
         {filteredEmploiList.length > 0 ? (
           filteredEmploiList.map((emploi) => (
@@ -33,7 +29,12 @@ const MesAnnonces = ({ connectedEmployerEmail }) => {
               <span className="jobSalary">{emploi.salaire}</span>
               <span className="jobLocation">{emploi.emplacement}</span>
               <div className="button-container">
-                <button className="buttonx" onClick={() => handleDelete(emploi)}>Supprimer</button>
+                <button
+                  className="buttonx"
+                  onClick={() => handleDelete(emploi)}
+                >
+                  Supprimer
+                </button>
               </div>
             </div>
           ))
@@ -43,8 +44,6 @@ const MesAnnonces = ({ connectedEmployerEmail }) => {
       </ul>
     </div>
   );
-
 };
 
 export default MesAnnonces;
- 

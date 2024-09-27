@@ -1,14 +1,15 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import MesAnnonces from '../MesAnnonces/MesAnnonces';
-import "./MesAnnoncesPage.css"
+import "./MesAnnoncesPage.css";
 import NavBarEnt from '../NavBarEnt/NavBarEnt';
+
 const MesAnnoncesPage = () => {
   const location = useLocation();
-  const connectedEmployerEmail = location.state?.connectedEmployerEmail; // Récupérer l'email de l'employeur
+  const connectedEmployerEmail = location.state?.connectedEmployerEmail;
 
-  // Ajoute un console.log pour déboguer
-  console.log("Email de l'employeur connecté : ", connectedEmployerEmail);
+  // Ajoute un log pour vérifier si l'email est transmis correctement
+  console.log('connectedEmployerEmail dans MesAnnoncesPage:', connectedEmployerEmail);
 
   return (
     <div>
@@ -18,4 +19,5 @@ const MesAnnoncesPage = () => {
     </div>
   );
 };
+
 export default MesAnnoncesPage;
